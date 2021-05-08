@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+qemu-img create -f raw lfs.img 60G
+
+parted lfs.img -- mklabel gpt
+parted lfs.img -- mkpart primary 512MiB -8GiB
+parted lfs.img -- mkpart primary linux-swap -8GiB 100%
+parted lfs.img -- mkpart ESP fat32 1MiB 512MiB
+parted lfs.img -- set 3 esp on
+
+losetup -P /dev/loop0 lfs.img 
+mkfs.ext4 -L lfs /dev/loop0p1
+mkswap -L swap /dev/loop0p2
+mkfs.fat -F 32 -n boot /dev/loop0p3
+losetup -d /dev/loop0

@@ -1,0 +1,32 @@
+#! /usr/bin/env bash
+
+export LFS=/mnt/lfs
+
+losetup -P /dev/loop0 lfs.img 
+mount -v -t ext4 /dev/loop0p1 $LFS
+swapon -v /dev/loop0p2
+
+mkdir -pv $LFS/{bin,etc,lib,sbin,usr,var,lib64}
+mkdir -pv $LFS/{tools,sources,tools-sources}
+
+wget http://lfsbookja.osdn.jp/10.1-sysdja/wget-list
+cat > wl.sed << "EOF"
+s|ftp\.gnu\.org/gnu/|ftp.riken.jp/GNU/|g
+s|https://www\.kernel\.org/pub/linux/|http://ftp.riken.jp/Linux/kernel.org/linux/|g
+s|www\.cpan\.org|ftp.riken.jp/lang/CPAN|g
+s|ftp\.vim\.org|ftp.jp.vim.org|g
+EOF
+sed -f wl.sed -i.orig wget-list 
+rm wl.sed 
+wget -N --input-file=wget-list --continue --directory-prefix=$LFS/sources
+wget -N --input-file=wget-list.orig --continue --directory-prefix=$LFS/sources
+
+wget http://lfsbookja.osdn.jp/10.1-sysdja/md5sums
+mv md5sums $LFS/sources/.
+(cd $LFS/sources && md5sum -c md5sums)
+
+awk -v path=$LFS '{print path "/sources/" $0}' tools-list | xargs cp -t $LFS/tools-sources
+
+swapoff -v /dev/loop0p2
+umount -v /dev/loop0p1
+losetup -d /dev/loop0
