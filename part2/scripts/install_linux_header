@@ -1,0 +1,20 @@
+#! /usr/bin/env bash
+
+SRC=linux-5.10.17.tar.xz
+DIR=linux-5.10.17
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+make mrproper
+make headers
+find usr/include -name '.*' -delete
+rm usr/include/Makefile
+cp -rv usr/include $LFS/usr
+exit

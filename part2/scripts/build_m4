@@ -1,0 +1,24 @@
+#! /usr/bin/env bash
+
+SRC=m4-1.4.18.tar.xz
+DIR=m4-1.4.18
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' lib/*.c
+echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
+
+./configure --prefix=/usr   \
+            --host=$LFS_TGT \
+            --build=$(build-aux/config.guess)
+
+make -j8
+make DESTDIR=$LFS install
+exit

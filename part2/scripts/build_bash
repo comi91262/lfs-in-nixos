@@ -1,0 +1,25 @@
+#! /usr/bin/env bash
+
+SRC=bash-5.1.tar.gz
+DIR=bash-5.1
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr                   \
+            --build=$(support/config.guess) \
+            --host=$LFS_TGT                 \
+            --without-bash-malloc
+
+make -j8
+make install
+mv $LFS/usr/bin/bash $LFS/bin/bash
+ln -sv bash $LFS/bin/sh
+
+exit

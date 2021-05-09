@@ -1,0 +1,27 @@
+#! /usr/bin/env bash
+
+SRC=file-5.39.tar.gz
+DIR=file-5.39
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+mkdir build
+pushd build
+  ../configure --disable-bzlib      \
+               --disable-libseccomp \
+               --disable-xzlib      \
+               --disable-zlib
+  make
+popd
+./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess)
+make -j8 FILE_COMPILE=$(pwd)/build/src/file
+make DESTDIR=$LFS install
+
+exit

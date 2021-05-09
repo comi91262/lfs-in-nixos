@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+SRC=patch-2.7.6.tar.xz
+DIR=patch-2.7.6
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr   \
+            --host=$LFS_TGT \
+            --build=$(build-aux/config.guess)
+
+make -j8
+
+make DESTDIR=$LFS install
+exit

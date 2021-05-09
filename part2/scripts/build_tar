@@ -1,0 +1,21 @@
+#! /usr/bin/env bash
+
+SRC=tar-1.34.tar.xz
+DIR=tar-1.34
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+./configure --prefix=/usr                     \
+            --host=$LFS_TGT                   \
+            --build=$(build-aux/config.guess) \
+            --bindir=/bin
+make -j8
+make DESTDIR=$LFS install
+
+exit

@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+SRC=gawk-5.1.0.tar.xz
+DIR=gawk-5.1.0
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+sed -i 's/extras//' Makefile.in
+./configure --prefix=/usr   \
+            --host=$LFS_TGT \
+            --build=$(./config.guess)
+make -j8
+make DESTDIR=$LFS install
+
+exit

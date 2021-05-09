@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+SRC=make-4.3.tar.gz
+DIR=make-4.3
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr   \
+            --without-guile \
+            --host=$LFS_TGT \
+            --build=$(build-aux/config.guess)
+
+make -j8
+make DESTDIR=$LFS install
+exit

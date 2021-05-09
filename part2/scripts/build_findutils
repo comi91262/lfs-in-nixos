@@ -1,0 +1,24 @@
+#! /usr/bin/env bash
+
+SRC=findutils-4.8.0.tar.xz
+DIR=findutils-4.8.0
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr   \
+            --host=$LFS_TGT \
+            --build=$(build-aux/config.guess)
+make -j8
+make DESTDIR=$LFS install
+mv -v $LFS/usr/bin/find $LFS/bin
+sed -i 's|find:=${BINDIR}|find:=/bin|' $LFS/usr/bin/updatedb=
+
+exit

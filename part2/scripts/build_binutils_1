@@ -1,0 +1,20 @@
+#! /usr/bin/env bash
+
+SRC=binutils-2.36.1.tar.xz
+DIR=binutils-2.36.1
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+
+cd $DIR
+mkdir build
+cd build
+../configure --prefix=$LFS/tools --with-sysroot=$LFS --target=$LFS_TGT --disable-nls --disable-werror
+make -j8
+make install
+exit

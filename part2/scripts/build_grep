@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+SRC=grep-3.6.tar.xz 
+DIR=grep-3.6
+
+cd $LFS/tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr   \
+            --host=$LFS_TGT \
+            --bindir=/bin
+
+make -j8
+make DESTDIR=$LFS install
+
+exit
