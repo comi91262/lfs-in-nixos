@@ -1,4 +1,7 @@
 gcc-10.2.0.tar.xz
+mpfr-4.1.0.tar.xz
+gmp-6.2.1.tar.xz
+mpc-1.2.1.tar.gz
 binutils-2.36.1.tar.xz
 glibc-2.33.tar.xz 
 glibc-2.33-fhs-1.patch 
