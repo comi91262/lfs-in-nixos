@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+export LFS=/mnt/lfs
+rm -vrf $LFS/{bin,etc,lib,lib64,sbin,tools,usr,var}/*
