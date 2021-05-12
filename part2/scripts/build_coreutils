@@ -16,11 +16,11 @@ cd $DIR
             --host=$LFS_TGT                   \
             --build=$(build-aux/config.guess) \
             --enable-install-program=hostname \
-            --enable-no-install-program=kill,uptime
+            --enable-no-install-program=kill,uptime > /dev/null
 
 
-make -j8
-make DESTDIR=$LFS install
+make -j8 -s > /dev/null
+make DESTDIR=$LFS install > /dev/null
 
 mv -v $LFS/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo} $LFS/bin
 mv -v $LFS/usr/bin/{false,ln,ls,mkdir,mknod,mv,pwd,rm}        $LFS/bin
@@ -30,5 +30,3 @@ mv -v $LFS/usr/bin/chroot                                     $LFS/usr/sbin
 mkdir -pv $LFS/usr/share/man/man8
 mv -v $LFS/usr/share/man/man1/chroot.1                        $LFS/usr/share/man/man8/chroot.8
 sed -i 's/"1"/"8"/'                                           $LFS/usr/share/man/man8/chroot.8
-
-exit

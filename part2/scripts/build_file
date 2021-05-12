@@ -13,15 +13,17 @@ tar -xf $SRC
 cd $DIR
 
 mkdir build
-pushd build
-  ../configure --disable-bzlib      \
-               --disable-libseccomp \
-               --disable-xzlib      \
-               --disable-zlib
-  make
-popd
-./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess)
-make -j8 FILE_COMPILE=$(pwd)/build/src/file
-make DESTDIR=$LFS install
+cd build
+cat > gcc.nix << "EOF"
+with import <nixpkgs> {};
+pkgs.mkShell {
+    buildInputs = with pkgs; [ gcc ];
+}
+EOF
+nix-shell gcc.nix --run "../configure --disable-bzlib --disable-libseccomp --disable-xzlib --disable-zlib > /dev/null"
+nix-shell gcc.nix --run "make -j8 -s > /dev/null"
+cd ..
 
-exit
+./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess) > /dev/null
+make -j8 FILE_COMPILE=$(pwd)/build/src/file -s > /dev/null
+make DESTDIR=$LFS install > /dev/null

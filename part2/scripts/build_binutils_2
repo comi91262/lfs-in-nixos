@@ -15,6 +15,14 @@ cd $DIR
 mkdir build
 cd build
 
+cat > gcc_with_options.nix << "EOF"
+with import <nixpkgs> {};
+pkgs.mkShell {
+    buildInputs = with pkgs; [ gcc ];
+    hardeningDisable = [ "format" ];
+}
+EOF
+
 ../configure                   \
     --prefix=/usr              \
     --build=$(../config.guess) \
@@ -24,6 +32,6 @@ cd build
     --disable-werror           \
     --enable-64-bit-bfd
 
-make DESTDIR=$LFS install
+nix-shell gcc_with_options.nix --run "make -j8 -s > /dev/null"
+make DESTDIR=$LFS install > /dev/null
 install -vm755 libctf/.libs/libctf.so.0.0.0 $LFS/usr/lib
-exit

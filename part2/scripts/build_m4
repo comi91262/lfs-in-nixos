@@ -17,8 +17,7 @@ echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
 
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
-            --build=$(build-aux/config.guess)
+            --build=$(build-aux/config.guess) > /dev/null
 
-make -j8
-make DESTDIR=$LFS install
-exit
+make -j8 -s > /dev/null
+make DESTDIR=$LFS install > /dev/null

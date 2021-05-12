@@ -12,14 +12,21 @@ fi
 tar -xf $SRC
 cd $DIR
 
-./configure --prefix=/usr                   \
-            --build=$(support/config.guess) \
-            --host=$LFS_TGT                 \
-            --without-bash-malloc
+cat > gcc.nix << "EOF"
+  with import <nixpkgs> {};
+  pkgs.mkShell {
+  buildInputs = with pkgs; [ gcc ];
+}
+EOF
 
-make -j8
-make install
+nix-shell gcc.nix --run \
+"./configure --prefix=/usr                  \
+             --build=$(support/config.guess) \
+             --host=$LFS_TGT                 \
+             --without-bash-malloc           \
+             BUILD_FOR_CC=gcc                \
+             CC=$LFS/tools/bin/x86_64-lfs-linux-gnu-gcc > /dev/null"
+nix-shell gcc.nix --run "make -j8 -s >> /dev/null"
+make DESTDIR=$LFS install >> /dev/null
 mv $LFS/usr/bin/bash $LFS/bin/bash
 ln -sv bash $LFS/bin/sh
-
-exit

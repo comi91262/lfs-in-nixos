@@ -20,13 +20,23 @@ tar -xf ../mpc-1.2.1.tar.gz
 mv -v mpc-1.2.1 mpc
 case $(uname -m) in
   x86_64)
-    sed -e '/m64=/s/lib64/lib/' \
-        -i.orig gcc/config/i386/t-linux64
- ;;
+    sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+  ;;
 esac
 
 mkdir build
 cd build
+
+mkdir -pv $LFS_TGT/libgcc
+ln -s ../../../libgcc/gthr-posix.h $LFS_TGT/libgcc/gthr-default.h
+
+cat > gcc_with_options.nix << "EOF"
+with import <nixpkgs> {};
+pkgs.mkShell {
+  buildInputs = with pkgs; [ gcc ];
+  hardeningDisable = [ "format" ];
+}
+EOF
 
 ../configure                                       \
     --build=$(../config.guess)                     \
@@ -45,8 +55,7 @@ cd build
     --disable-libvtv                               \
     --disable-libstdcxx                            \
     --enable-languages=c,c++
-make -j8
-make DESTDIR=$LFS install
-ln -sv gcc $LFS/usr/bin/cc
 
-exit
+nix-shell gcc_with_options.nix --run "make -j8 -s > /dev/null"
+make DESTDIR=$LFS install > /dev/null
+ln -sv gcc $LFS/usr/bin/cc

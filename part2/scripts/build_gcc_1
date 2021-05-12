@@ -28,7 +28,16 @@ esac
 mkdir build
 cd build
 
-../configure                                       \
+cat > gcc_with_options.nix << "EOF"
+  with import <nixpkgs> {};
+  pkgs.mkShell {
+  buildInputs = with pkgs; [ gcc ];
+  hardeningDisable = [ "format" ];
+}
+EOF
+
+nix-shell gcc_with_options.nix --run  \
+    "../configure                                \
     --target=$LFS_TGT                              \
     --prefix=$LFS/tools                            \
     --with-glibc-version=2.11                      \
@@ -47,12 +56,11 @@ cd build
     --disable-libssp                               \
     --disable-libvtv                               \
     --disable-libstdcxx                            \
-    --enable-languages=c,c++
+    --enable-languages=c,c++ > /dev/null"
 
-make -j8
-make install
+nix-shell gcc_with_options.nix --run "make -j8 -s > /dev/null"
+make install > /dev/null
 
 cd ..
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
-  `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/install-tools/include/limits.hexit
-exit
+  `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/install-tools/include/limits.h

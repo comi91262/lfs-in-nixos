@@ -12,8 +12,6 @@ fi
 tar -xf $SRC
 cd $DIR
 
-./configure --prefix=/usr --host=$LFS_TGT
-make -j8
-make DESTDIR=$LFS install
-
-exit
+./configure --prefix=/usr --host=$LFS_TGT > /dev/null
+make -j8 -s > /dev/null
+make DESTDIR=$LFS install > /dev/null

@@ -12,9 +12,15 @@ fi
 tar -xf $SRC
 cd $DIR
 
-make mrproper
-make headers
+cat > gcc.nix << "EOF"
+  with import <nixpkgs> {};
+  pkgs.mkShell {
+  buildInputs = with pkgs; [ gcc ];
+}
+EOF
+
+nix-shell gcc.nix --run "make mrproper -s > /dev/null"
+nix-shell gcc.nix --run "make headers -s > /dev/null"
 find usr/include -name '.*' -delete
 rm usr/include/Makefile
-cp -rv usr/include $LFS/usr
-exit
+cp -r usr/include $LFS/usr

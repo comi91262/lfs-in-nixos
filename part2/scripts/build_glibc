@@ -30,15 +30,13 @@ cd       build
       --build=$(../scripts/config.guess) \
       --enable-kernel=3.2                \
       --with-headers=$LFS/usr/include    \
-      libc_cv_slibdir=/lib
+      libc_cv_slibdir=/lib  > /dev/null
 
-make -j1
-make DESTDIR=$LFS install
+make -j1 -s > /dev/null
+make DESTDIR=$LFS install > /dev/null
 
 echo 'int main(){}' > dummy.c
 $LFS_TGT-gcc dummy.c
 readelf -l a.out | grep '/ld-linux'
 rm -v dummy.c a.out
 $LFS/tools/libexec/gcc/$LFS_TGT/10.2.0/install-tools/mkheaders
-
-exit
