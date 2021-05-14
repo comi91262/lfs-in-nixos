@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+
+export LFS=/mnt/lfs
+
+rm -rf $LFS/tools/scripts_in_lfs
+
+umount $LFS/dev{/pts,}
+umount $LFS/{sys,proc,run}

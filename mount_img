@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+losetup -P /dev/loop0 lfs.img 
+mount -v -t ext4 /dev/loop0p1 /mnt/lfs
+swapon -v /dev/loop0p2

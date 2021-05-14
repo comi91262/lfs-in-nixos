@@ -1,0 +1,20 @@
+#! /usr/bin/env bash
+
+SRC=Python-3.9.2.tar.xz
+DIR=Python-3.9.2
+
+cd /tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr   \
+            --enable-shared \
+            --without-ensurepip > /dev/null
+
+make -j8 -s > /dev/null
+make install > /dev/null

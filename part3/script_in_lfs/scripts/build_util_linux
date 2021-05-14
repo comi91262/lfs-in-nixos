@@ -1,0 +1,30 @@
+#! /usr/bin/env bash
+
+SRC=util-linux-2.36.2.tar.xz
+DIR=util-linux-2.36.2
+
+cd /tools-sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+mkdir -pv /var/lib/hwclock
+
+./configure ADJTIME_PATH=/var/lib/hwclock/adjtime    \
+            --docdir=/usr/share/doc/util-linux-2.36.2 \
+            --disable-chfn-chsh  \
+            --disable-login      \
+            --disable-nologin    \
+            --disable-su         \
+            --disable-setpriv    \
+            --disable-runuser    \
+            --disable-pylibmount \
+            --disable-static     \
+            --without-python     \
+            runstatedir=/run > /dev/null
+
+make -j8 -s > /dev/null
+make install > /dev/null
