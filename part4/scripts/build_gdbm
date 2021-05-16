@@ -1,0 +1,20 @@
+#! /bin/bash
+
+SRC=gdbm-1.19.tar.gz
+DIR=gdbm-1.19
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr    \
+            --disable-static \
+            --enable-libgdbm-compat > /dev/null
+make -j8 -s > /dev/null
+make -j8 check
+make install > /dev/null

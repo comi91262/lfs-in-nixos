@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+export LFS=/mnt/lfs
+
+umount $LFS/dev{/pts,}
+umount $LFS/{sys,proc,run}
+
+swapoff -v /dev/loop0p2
+umount -v /dev/loop0p1
+losetup -d /dev/loop0

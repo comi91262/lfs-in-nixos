@@ -1,0 +1,29 @@
+#! /bin/bash
+
+SRC=inetutils-2.0.tar.xz
+DIR=inetutils-2.0
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr        \
+            --localstatedir=/var \
+            --disable-logger     \
+            --disable-whois      \
+            --disable-rcp        \
+            --disable-rexec      \
+            --disable-rlogin     \
+            --disable-rsh        \
+            --disable-servers > /dev/null
+make -j8 -s > /dev/null
+make -j8 check
+make install > /dev/null
+
+mv -v /usr/bin/{hostname,ping,ping6,traceroute} /bin
+mv -v /usr/bin/ifconfig /sbin

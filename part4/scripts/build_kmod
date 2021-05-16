@@ -1,0 +1,27 @@
+#! /bin/bash
+
+SRC=kmod-28.tar.xz
+DIR=kmod-28
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr          \
+            --bindir=/bin          \
+            --sysconfdir=/etc      \
+            --with-rootlibdir=/lib \
+            --with-xz              \
+            --with-zstd            \
+            --with-zlib > /dev/null
+make -j8 -s > /dev/null
+make install > /dev/null
+for target in depmod insmod lsmod modinfo modprobe rmmod; do
+  ln -sfv ../bin/kmod /sbin/$target
+done
+ln -sfv kmod /bin/lsmod

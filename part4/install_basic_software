@@ -1,0 +1,74 @@
+#! /bin/bash
+
+# ./scripts/build_man_pages
+# ./scripts/build_iana_etc
+# ./scripts/build_glibc
+# ./scripts/build_zlib
+# ./scripts/build_bzip2
+# ./scripts/build_xz
+# ./scripts/build_zstd
+# ./scripts/build_file
+# ./scripts/build_readline
+# ./scripts/build_m4
+# ./scripts/build_bc
+# ./scripts/build_flex
+# ./scripts/build_tcl
+# ./scripts/build_expect
+# ./scripts/build_dejagnu
+# ./scripts/build_binutils
+# ./scripts/build_gmp
+# ./scripts/build_mpfr
+# ./scripts/build_mpc
+# ./scripts/build_attr
+# ./scripts/build_acl
+# ./scripts/build_libcap
+# ./scripts/build_shadow
+./scripts/build_gcc
+./scripts/build_pkg_config
+./scripts/build_ncurses
+./scripts/build_sed
+./scripts/build_psmisc
+./scripts/build_gettext
+./scripts/build_bison
+./scripts/build_grep
+./scripts/build_bash
+./scripts/build_libtool
+./scripts/build_gdbm
+./scripts/build_gperf
+./scripts/build_expat
+./scripts/build_inetutils
+./scripts/build_perl
+./scripts/build_xml_parser
+./scripts/build_intltool
+./scripts/build_autoconf
+./scripts/build_automake
+./scripts/build_kmod
+./scripts/build_libelf
+./scripts/build_libffi
+./scripts/build_openssl
+./scripts/build_python
+./scripts/build_ninja
+./scripts/build_meson
+./scripts/build_coreutils
+./scripts/build_check
+./scripts/build_diffutils
+./scripts/build_gawk
+./scripts/build_findutils
+./scripts/build_groff
+./scripts/build_grub
+./scripts/build_less
+./scripts/build_gzip
+./scripts/build_iproute2
+./scripts/build_kbd
+./scripts/build_libpipeline
+./scripts/build_make
+./scripts/build_patch
+./scripts/build_man_db
+./scripts/build_tar
+./scripts/build_texinfo
+./scripts/build_vim
+./scripts/build_systemd
+./scripts/build_dbus
+./scripts/build_procps
+./scripts/build_util_linux
+./scripts/build_e2fsprogs

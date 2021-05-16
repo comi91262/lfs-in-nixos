@@ -1,0 +1,18 @@
+#! /bin/bash
+
+SRC=bison-3.7.5.tar.xz
+DIR=bison-3.7.5
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr --docdir=/usr/share/doc/bison-3.7.5 > /dev/null
+make -j8 -s > /dev/null
+make -j8 check
+make install > /dev/null
