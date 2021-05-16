@@ -1,0 +1,25 @@
+#! /bin/bash
+
+SRC=grub-2.04.tar.xz
+DIR=grub-2.04
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+sed "s/gold-version/& -R .note.gnu.property/" \
+    -i Makefile.in grub-core/Makefile.in
+
+./configure --prefix=/usr          \
+            --sbindir=/sbin        \
+            --sysconfdir=/etc      \
+            --disable-efiemu       \
+            --disable-werror > /dev/null
+make -j8 -s > /dev/null
+make install > /dev/null
+mv /etc/bash_completion.d/grub /usr/share/bash-completion/completions

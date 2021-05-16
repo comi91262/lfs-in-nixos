@@ -1,0 +1,20 @@
+#! /bin/bash
+
+SRC=iproute2-5.10.0.tar.xz     
+DIR=iproute2-5.10.0
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+sed -i /ARPD/d Makefile
+rm -fv man/man8/arpd.8
+sed -i 's/.m_ipt.o//' tc/Makefile
+
+make -j8 -s > /dev/null
+make DOCDIR=/usr/share/doc/iproute2-5.10.0 install > /dev/null

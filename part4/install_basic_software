@@ -1,74 +1,74 @@
 #! /bin/bash
 
-# ./scripts/build_man_pages
-# ./scripts/build_iana_etc
-# ./scripts/build_glibc
-# ./scripts/build_zlib
-# ./scripts/build_bzip2
-# ./scripts/build_xz
-# ./scripts/build_zstd
-# ./scripts/build_file
-# ./scripts/build_readline
-# ./scripts/build_m4
-# ./scripts/build_bc
-# ./scripts/build_flex
-# ./scripts/build_tcl
-# ./scripts/build_expect
-# ./scripts/build_dejagnu
-# ./scripts/build_binutils
-# ./scripts/build_gmp
-# ./scripts/build_mpfr
-# ./scripts/build_mpc
-# ./scripts/build_attr
-# ./scripts/build_acl
-# ./scripts/build_libcap
-# ./scripts/build_shadow
-./scripts/build_gcc
-./scripts/build_pkg_config
-./scripts/build_ncurses
-./scripts/build_sed
-./scripts/build_psmisc
-./scripts/build_gettext
-./scripts/build_bison
-./scripts/build_grep
-./scripts/build_bash
-./scripts/build_libtool
-./scripts/build_gdbm
-./scripts/build_gperf
-./scripts/build_expat
-./scripts/build_inetutils
-./scripts/build_perl
-./scripts/build_xml_parser
-./scripts/build_intltool
-./scripts/build_autoconf
-./scripts/build_automake
-./scripts/build_kmod
-./scripts/build_libelf
-./scripts/build_libffi
-./scripts/build_openssl
-./scripts/build_python
-./scripts/build_ninja
-./scripts/build_meson
-./scripts/build_coreutils
-./scripts/build_check
-./scripts/build_diffutils
-./scripts/build_gawk
-./scripts/build_findutils
-./scripts/build_groff
-./scripts/build_grub
-./scripts/build_less
-./scripts/build_gzip
-./scripts/build_iproute2
-./scripts/build_kbd
-./scripts/build_libpipeline
-./scripts/build_make
-./scripts/build_patch
-./scripts/build_man_db
-./scripts/build_tar
-./scripts/build_texinfo
-./scripts/build_vim
-./scripts/build_systemd
-./scripts/build_dbus
-./scripts/build_procps
-./scripts/build_util_linux
-./scripts/build_e2fsprogs
+./scripts/build_and_install/man_pages
+./scripts/build_and_install/iana_etc
+./scripts/build_and_install/glibc
+./scripts/build_and_install/zlib
+./scripts/build_and_install/bzip2
+./scripts/build_and_install/xz
+./scripts/build_and_install/zstd
+./scripts/build_and_install/file
+./scripts/build_and_install/readline
+./scripts/build_and_install/m4
+./scripts/build_and_install/bc
+./scripts/build_and_install/flex
+./scripts/build_and_install/tcl
+./scripts/build_and_install/expect
+./scripts/build_and_install/dejagnu
+./scripts/build_and_install/binutils
+./scripts/build_and_install/gmp
+./scripts/build_and_install/mpfr
+./scripts/build_and_install/mpc
+./scripts/build_and_install/attr
+./scripts/build_and_install/acl
+./scripts/build_and_install/libcap
+./scripts/build_and_install/shadow
+./scripts/build_and_install/gcc
+./scripts/build_and_install/pkg_config
+./scripts/build_and_install/ncurses
+./scripts/build_and_install/sed
+./scripts/build_and_install/psmisc
+./scripts/build_and_install/gettext
+./scripts/build_and_install/bison
+./scripts/build_and_install/grep
+./scripts/build_and_install/bash
+./scripts/build_and_install/libtool
+./scripts/build_and_install/gdbm
+./scripts/build_and_install/gperf
+./scripts/build_and_install/expat
+./scripts/build_and_install/inetutils
+./scripts/build_and_install/perl
+./scripts/build_and_install/xml_parser
+./scripts/build_and_install/intltool
+./scripts/build_and_install/autoconf
+./scripts/build_and_install/automake
+./scripts/build_and_install/kmod
+./scripts/build_and_install/libelf
+./scripts/build_and_install/libffi
+./scripts/build_and_install/openssl
+./scripts/build_and_install/python
+./scripts/build_and_install/ninja
+./scripts/build_and_install/meson
+./scripts/build_and_install/coreutils
+./scripts/build_and_install/check
+./scripts/build_and_install/diffutils
+./scripts/build_and_install/gawk
+./scripts/build_and_install/findutils
+./scripts/build_and_install/groff
+./scripts/build_and_install/grub
+./scripts/build_and_install/less
+./scripts/build_and_install/gzip
+./scripts/build_and_install/iproute2
+./scripts/build_and_install/kbd
+./scripts/build_and_install/libpipeline
+./scripts/build_and_install/make
+./scripts/build_and_install/patch
+./scripts/build_and_install/man_db
+./scripts/build_and_install/tar
+./scripts/build_and_install/texinfo
+./scripts/build_and_install/vim
+./scripts/build_and_install/systemd
+./scripts/build_and_install/dbus
+./scripts/build_and_install/procps
+./scripts/build_and_install/util_linux
+./scripts/build_and_install/e2fsprogs

@@ -1,0 +1,23 @@
+#! /bin/bash
+
+SRC=acl-2.2.53.tar.gz
+DIR=acl-2.2.53
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+./configure --prefix=/usr         \
+            --disable-static      \
+            --libexecdir=/usr/lib \
+            --docdir=/usr/share/doc/acl-2.2.53 > /dev/null
+
+make -j8 -s > /dev/null
+make install > /dev/null
+
+mv -v /usr/lib/libacl.so.* /lib
+ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so

@@ -1,0 +1,15 @@
+#! /bin/bash
+
+SRC=iana-etc-20210202.tar.gz
+DIR=iana-etc-20210202
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+cp services protocols /etc

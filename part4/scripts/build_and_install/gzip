@@ -1,0 +1,19 @@
+#! /bin/bash
+
+SRC=gzip-1.10.tar.xz        
+DIR=gzip-1.10
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr > /dev/null
+make -j8 -s > /dev/null
+make -j8 check
+make install > /dev/null
+mv -v /usr/bin/gzip /bin
