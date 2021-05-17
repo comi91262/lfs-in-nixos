@@ -4,9 +4,7 @@ export LFS=/mnt/lfs
 
 losetup -P /dev/loop0 lfs.img 
 mount -v -t ext4 /dev/loop0p1 $LFS
-swapon -v /dev/loop0p2
 
-chmod -v a+wt $LFS/{sources,tools-sources}
 chown -v lfs $LFS/{usr,lib,var,etc,bin,sbin,tools,lib64}
 chown -v lfs $LFS/{sources,tools-sources}
 
@@ -28,9 +26,7 @@ CONFIG_SITE=$LFS/usr/share/config.site/run/current-system/sw/bin
 export LFS LC_ALL LFS_TGT PATH CONFIG_SITE
 EOF
 
-
 chmod -v lfs:users /home/lfs/{.bash_profile,.bashrc}
 
-swapoff -v /dev/loop0p2
 umount -v /dev/loop0p1
 losetup -d /dev/loop0

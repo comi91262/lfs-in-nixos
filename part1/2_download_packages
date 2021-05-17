@@ -4,9 +4,7 @@ export LFS=/mnt/lfs
 
 losetup -P /dev/loop0 lfs.img 
 mount -v -t ext4 /dev/loop0p1 $LFS
-swapon -v /dev/loop0p2
 
-mkdir -pv $LFS/{bin,etc,lib,sbin,usr,var,lib64}
 mkdir -pv $LFS/{tools,sources,tools-sources}
 
 wget http://lfsbookja.osdn.jp/10.1-sysdja/wget-list
@@ -27,6 +25,5 @@ mv md5sums $LFS/sources/.
 
 awk -v path=$LFS '{print path "/sources/" $0}' tools-list | xargs cp -t $LFS/tools-sources
 
-swapoff -v /dev/loop0p2
 umount -v /dev/loop0p1
 losetup -d /dev/loop0

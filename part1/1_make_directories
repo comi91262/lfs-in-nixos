@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+export LFS=/mnt/lfs
+
+losetup -P /dev/loop0 lfs.img 
+mount -v -t ext4 /dev/loop0p1 $LFS
+
+mkdir -pv $LFS/{bin,etc,lib,sbin,usr,var,lib64}
+
+umount -v /dev/loop0p1
+losetup -d /dev/loop0
