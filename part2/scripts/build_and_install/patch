@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
-SRC=sed-4.8.tar.xz
-DIR=sed-4.8
+SRC=patch-2.7.6.tar.xz
+DIR=patch-2.7.6
 
 cd $LFS/tools-sources
 
@@ -14,6 +14,6 @@ cd $DIR
 
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
-            --bindir=/bin > /dev/null
-make -j8 -s > /dev/null
-make DESTDIR=$LFS install > /dev/null
+            --build=$(build-aux/config.guess) 
+make
+make DESTDIR=$LFS install 

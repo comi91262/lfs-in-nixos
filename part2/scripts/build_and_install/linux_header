@@ -19,8 +19,8 @@ cat > gcc.nix << "EOF"
 }
 EOF
 
-nix-shell gcc.nix --run "make mrproper -s > /dev/null"
-nix-shell gcc.nix --run "make headers -s > /dev/null"
+nix-shell gcc.nix --run "make mrproper"
+nix-shell gcc.nix --run "make headers"
 find usr/include -name '.*' -delete
 rm usr/include/Makefile
 cp -r usr/include $LFS/usr

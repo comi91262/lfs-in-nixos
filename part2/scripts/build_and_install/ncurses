@@ -22,9 +22,9 @@ cat > gcc.nix << "EOF"
   buildInputs = with pkgs; [ gcc ];
 }
 EOF
-nix-shell gcc.nix --run "../configure > /dev/null"
-nix-shell gcc.nix --run "make -j8 -C include -s > /dev/null"
-nix-shell gcc.nix --run "make -j8 -C progs tic -s > /dev/null"
+nix-shell gcc.nix --run "../configure"
+nix-shell gcc.nix --run "make -C include"
+nix-shell gcc.nix --run "make -C progs tic"
 cp gcc.nix ../.
 cd ..
 
@@ -41,10 +41,10 @@ nix-shell gcc.nix --run \
              --without-normal             \
              --enable-widec               \
              CC=$LFS/tools/bin/x86_64-lfs-linux-gnu-gcc \
-             CXX=$LFS/tools/bin/x86_64-lfs-linux-gnu-g++ > /dev/null"
+             CXX=$LFS/tools/bin/x86_64-lfs-linux-gnu-g++ "
 
-nix-shell gcc.nix --run "make -j8 -s > /dev/null"
-make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install > /dev/null
+nix-shell gcc.nix --run "make"
+make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install 
 echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so
-mv -v $LFS/usr/lib/libncursesw.so.6* $LFS/lib
-ln -sfv ../../lib/$(readlink $LFS/usr/lib/libncursesw.so) $LFS/usr/lib/libncursesw.so
+mv $LFS/usr/lib/libncursesw.so.6* $LFS/lib
+ln -sf ../../lib/$(readlink $LFS/usr/lib/libncursesw.so) $LFS/usr/lib/libncursesw.so

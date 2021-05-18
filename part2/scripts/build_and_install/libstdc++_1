@@ -12,8 +12,8 @@ fi
 tar -xf $SRC
 cd $DIR
 
-mkdir -v build
-cd       build
+mkdir build
+cd    build
 
 ../libstdc++-v3/configure           \
     --host=$LFS_TGT                 \
@@ -22,6 +22,6 @@ cd       build
     --disable-multilib              \
     --disable-nls                   \
     --disable-libstdcxx-pch         \
-    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/10.2.0 > /dev/null
-make -j8 -s > /dev/null
-make DESTDIR=$LFS install > /dev/null
+    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/10.2.0 
+make
+make DESTDIR=$LFS install 

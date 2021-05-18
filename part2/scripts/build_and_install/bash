@@ -25,8 +25,8 @@ nix-shell gcc.nix --run \
              --host=$LFS_TGT                 \
              --without-bash-malloc           \
              BUILD_FOR_CC=gcc                \
-             CC=$LFS/tools/bin/x86_64-lfs-linux-gnu-gcc > /dev/null"
-nix-shell gcc.nix --run "make -j8 -s >> /dev/null"
-make DESTDIR=$LFS install >> /dev/null
+             CC=$LFS/tools/bin/x86_64-lfs-linux-gnu-gcc"
+nix-shell gcc.nix --run "make"
+make DESTDIR=$LFS install
 mv $LFS/usr/bin/bash $LFS/bin/bash
-ln -sv bash $LFS/bin/sh
+ln -s bash $LFS/bin/sh

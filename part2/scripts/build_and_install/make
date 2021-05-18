@@ -15,7 +15,7 @@ cd $DIR
 ./configure --prefix=/usr   \
             --without-guile \
             --host=$LFS_TGT \
-            --build=$(build-aux/config.guess) > /dev/null
+            --build=$(build-aux/config.guess) 
 
-make -j8 -s > /dev/null
-make DESTDIR=$LFS install > /dev/null
+make
+make DESTDIR=$LFS install 

@@ -15,6 +15,6 @@ cd $DIR
 sed -i 's/extras//' Makefile.in
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
-            --build=$(./config.guess) > /dev/null
-make -j8 -s > /dev/null
-make DESTDIR=$LFS install > /dev/null
+            --build=$(./config.guess) 
+make
+make DESTDIR=$LFS install 

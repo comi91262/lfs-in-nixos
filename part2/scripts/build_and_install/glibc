@@ -13,16 +13,16 @@ tar -xf $SRC
 cd $DIR
 
 case $(uname -m) in
-    i?86)   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
+    i?86)   ln -sf ld-linux.so.2 $LFS/lib/ld-lsb.so.3
     ;;
-    x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64
-            ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
+    x86_64) ln -sf ../lib/ld-linux-x86-64.so.2 $LFS/lib64
+            ln -sf ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
     ;;
 esac
 patch -Np1 -i ../glibc-2.33-fhs-1.patch
 
-mkdir -v build
-cd       build
+mkdir build
+cd    build
 
 ../configure                             \
       --prefix=/usr                      \
@@ -30,13 +30,18 @@ cd       build
       --build=$(../scripts/config.guess) \
       --enable-kernel=3.2                \
       --with-headers=$LFS/usr/include    \
-      libc_cv_slibdir=/lib  > /dev/null
+      libc_cv_slibdir=/lib  
 
-make -j1 -s > /dev/null
-make DESTDIR=$LFS install > /dev/null
+make -j1 
+make DESTDIR=$LFS install 
 
 echo 'int main(){}' > dummy.c
 $LFS_TGT-gcc dummy.c
-readelf -l a.out | grep '/ld-linux'
-rm -v dummy.c a.out
+RESULT=`readelf -l a.out | grep '/ld-linux'`
+
+if [[ "$RESULT" != *"/lib64/ld-linux-x86-64.so.2"* ]]; then
+  echo 'error: something wrong in glibc' 1>&2
+fi
+rm dummy.c a.out
+
 $LFS/tools/libexec/gcc/$LFS_TGT/10.2.0/install-tools/mkheaders

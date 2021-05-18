@@ -1,0 +1,26 @@
+#! /usr/bin/env bash
+
+export MAKEFLAGS='-j8'
+
+./scripts/build_and_install/binutils_1 > /dev/null
+./scripts/build_and_install/gcc_1 > /dev/null
+./scripts/build_and_install/linux_header > /dev/null
+./scripts/build_and_install/glibc > /dev/null
+./scripts/build_and_install/libstdc++_1 > /dev/null
+./scripts/build_and_install/m4 > /dev/null
+./scripts/build_and_install/ncurses > /dev/null
+./scripts/build_and_install/bash > /dev/null
+./scripts/build_and_install/coreutils > /dev/null
+./scripts/build_and_install/diffutils > /dev/null
+./scripts/build_and_install/file > /dev/null
+./scripts/build_and_install/findutils > /dev/null
+./scripts/build_and_install/gawk > /dev/null
+./scripts/build_and_install/grep > /dev/null
+./scripts/build_and_install/gzip > /dev/null
+./scripts/build_and_install/make > /dev/null
+./scripts/build_and_install/patch > /dev/null
+./scripts/build_and_install/sed > /dev/null
+./scripts/build_and_install/tar > /dev/null
+./scripts/build_and_install/xz > /dev/null
+./scripts/build_and_install/binutils_2 > /dev/null
+./scripts/build_and_install/gcc_2 > /dev/null

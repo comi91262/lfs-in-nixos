@@ -22,6 +22,6 @@ cat > gcc_with_options.nix << "EOF"
 }
 EOF
 
-nix-shell gcc_with_options.nix --run "../configure --prefix=$LFS/tools --with-sysroot=$LFS --target=$LFS_TGT --disable-nls --disable-werror > /dev/null"
-nix-shell gcc_with_options.nix --run "make -j8 -s > /dev/null"
-make install > /dev/null
+nix-shell gcc_with_options.nix --run "../configure --prefix=$LFS/tools --with-sysroot=$LFS --target=$LFS_TGT --disable-nls --disable-werror"
+nix-shell gcc_with_options.nix --run "make"
+make install 
