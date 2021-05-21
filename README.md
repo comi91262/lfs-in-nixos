@@ -10,9 +10,9 @@
 
 # Contents
 
-part1: Make .img disk and Create lfs user by root.
-part2: Build temporary tools by lfs.
-part3: Chroot and add temporary tools.
-part4: Build LFS system in chroot .
-part5: Build Linux kernel and boot. 
+- part1: Make .img disk and Create lfs user by root.
+- part2: Build temporary tools by lfs.
+- part3: Chroot and add temporary tools.
+- part4: Build LFS system in chroot .
+- part5: Build Linux kernel and boot. 
 
