@@ -22,12 +22,24 @@ cat > gcc.nix << "EOF"
   buildInputs = with pkgs; [ gcc ];
 }
 EOF
+
 nix-shell gcc.nix --run "../configure"
 nix-shell gcc.nix --run "make -C include"
 nix-shell gcc.nix --run "make -C progs tic"
-cp gcc.nix ../.
 cd ..
 
+
+cat > gcc.nix << "EOF"
+  with import <nixpkgs> {};
+  pkgs.mkShell {
+  buildInputs = with pkgs; [ gcc ];
+  shellHook = '' 
+    export PATH="$LFS/tools/bin:$PATH"
+    unset CC
+    unset CXX
+  '';
+}
+EOF
 
 nix-shell gcc.nix --run \
 "./configure --prefix=/usr                \
@@ -39,12 +51,11 @@ nix-shell gcc.nix --run \
              --without-debug              \
              --without-ada                \
              --without-normal             \
-             --enable-widec               \
-             CC=$LFS/tools/bin/x86_64-lfs-linux-gnu-gcc \
-             CXX=$LFS/tools/bin/x86_64-lfs-linux-gnu-g++ "
+             --enable-widec"
 
 nix-shell gcc.nix --run "make"
-make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install 
+nix-shell gcc.nix --run "make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install"
+
 echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so
 mv $LFS/usr/lib/libncursesw.so.6* $LFS/lib
 ln -sf ../../lib/$(readlink $LFS/usr/lib/libncursesw.so) $LFS/usr/lib/libncursesw.so

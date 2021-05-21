@@ -16,6 +16,10 @@ cat > gcc.nix << "EOF"
   with import <nixpkgs> {};
   pkgs.mkShell {
   buildInputs = with pkgs; [ gcc ];
+  shellHook = '' 
+    export PATH="$LFS/tools/bin:$PATH"
+    unset CC
+  '';
 }
 EOF
 
@@ -23,10 +27,11 @@ nix-shell gcc.nix --run \
 "./configure --prefix=/usr                  \
              --build=$(support/config.guess) \
              --host=$LFS_TGT                 \
-             --without-bash-malloc           \
-             BUILD_FOR_CC=gcc                \
-             CC=$LFS/tools/bin/x86_64-lfs-linux-gnu-gcc"
+             --without-bash-malloc"
+
+          #   BUILD_FOR_CC=gcc                \
+          #   CC=$LFS/tools/bin/x86_64-lfs-linux-gnu-gcc"
 nix-shell gcc.nix --run "make"
-make DESTDIR=$LFS install
+nix-shell gcc.nix --run "make DESTDIR=$LFS install"
 mv $LFS/usr/bin/bash $LFS/bin/bash
 ln -s bash $LFS/bin/sh

@@ -35,10 +35,16 @@ with import <nixpkgs> {};
 pkgs.mkShell {
   buildInputs = with pkgs; [ gcc ];
   hardeningDisable = [ "format" ];
+  shellHooks = ''
+    export PATH="$LFS/tools/bin:$PATH"
+    unset CC
+    unset CXX
+  '';
 }
 EOF
 
-../configure                                       \
+nix-shell gcc_with_options.nix --run \
+ "../configure                                     \
     --build=$(../config.guess)                     \
     --host=$LFS_TGT                                \
     --prefix=/usr                                  \
@@ -54,8 +60,9 @@ EOF
     --disable-libssp                               \
     --disable-libvtv                               \
     --disable-libstdcxx                            \
-    --enable-languages=c,c++
+    --enable-languages=c,c++"
 
 nix-shell gcc_with_options.nix --run "make"
-make DESTDIR=$LFS install 
+nix-shell gcc_with_options.nix --run "make DESTDIR=$LFS install"
+
 ln -sv gcc $LFS/usr/bin/cc

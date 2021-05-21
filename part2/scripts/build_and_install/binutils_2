@@ -20,18 +20,24 @@ with import <nixpkgs> {};
 pkgs.mkShell {
     buildInputs = with pkgs; [ gcc ];
     hardeningDisable = [ "format" ];
+    shellHook = '' 
+        export PATH="$LFS/tools/bin:$PATH"
+        unset CC
+        unset CXX
+    '';
 }
 EOF
 
-../configure                   \
+nix-shell gcc_with_options.nix --run \
+   "../configure               \
     --prefix=/usr              \
     --build=$(../config.guess) \
     --host=$LFS_TGT            \
     --disable-nls              \
     --enable-shared            \
     --disable-werror           \
-    --enable-64-bit-bfd
+    --enable-64-bit-bfd"
 
 nix-shell gcc_with_options.nix --run "make"
-make DESTDIR=$LFS install 
-install -vm755 libctf/.libs/libctf.so.0.0.0 $LFS/usr/lib
+nix-shell gcc_with_options.nix --run "make -j1 DESTDIR=$LFS install"
+install -m 755 libctf/.libs/libctf.so.0.0.0 $LFS/usr/lib

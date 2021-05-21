@@ -24,4 +24,4 @@ EOF
 
 nix-shell gcc_with_options.nix --run "../configure --prefix=$LFS/tools --with-sysroot=$LFS --target=$LFS_TGT --disable-nls --disable-werror"
 nix-shell gcc_with_options.nix --run "make"
-make install 
+nix-shell gcc_with_options.nix --run "make install"

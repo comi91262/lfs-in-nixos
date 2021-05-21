@@ -59,7 +59,7 @@ nix-shell gcc_with_options.nix --run  \
     --enable-languages=c,c++"
 
 nix-shell gcc_with_options.nix --run "make"
-make install 
+nix-shell gcc_with_options.nix --run "make install"
 
 cd ..
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
