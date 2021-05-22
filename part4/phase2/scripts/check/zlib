@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=zlib-1.2.11.tar.xz
+DIR=zlib-1.2.11
+
+cd /sources
+cd $DIR
+
+make check

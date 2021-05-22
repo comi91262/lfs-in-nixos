@@ -1,0 +1,16 @@
+#! /bin/bash
+
+MAKEFLAGS="-j8"
+
+./scripts/check/zlib
+./scripts/check/bzip2
+./scripts/check/xz
+./scripts/check/zstd
+./scripts/check/file
+./scripts/check/m4
+./scripts/check/bc
+./scripts/check/flex
+./scripts/check/tcl
+./scripts/check/expect
+./scripts/check/dejagnu
+./scripts/check/binutils

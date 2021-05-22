@@ -1,0 +1,17 @@
+#! /bin/bash
+
+SRC=file-5.39.tar.gz
+DIR=file-5.39
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr
+make
+make install

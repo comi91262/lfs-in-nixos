@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=dejagnu-1.6.2.tar.gz
+DIR=dejagnu-1.6.2
+
+cd /sources
+cd $DIR
+
+make check

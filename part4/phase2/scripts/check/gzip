@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=gzip-1.10.tar.xz        
+DIR=gzip-1.10
+
+cd /sources
+cd $DIR
+make check

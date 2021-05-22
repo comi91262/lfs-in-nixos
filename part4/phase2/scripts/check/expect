@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=expect5.45.4.tar.gz
+DIR=expect5.45.4
+
+cd /sources
+cd $DIR
+make test

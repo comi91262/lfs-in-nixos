@@ -1,0 +1,10 @@
+#! /bin/bash
+
+SRC=binutils-2.36.1.tar.xz
+DIR=binutils-2.36.1
+
+cd /sources
+cd $DIR
+cd build
+
+make -k check

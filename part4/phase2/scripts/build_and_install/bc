@@ -1,0 +1,17 @@
+#! /bin/bash
+
+SRC=bc-3.3.0.tar.xz
+DIR=bc-3.3.0
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+PREFIX=/usr CC=gcc ./configure.sh -G -O3 
+make
+make install 

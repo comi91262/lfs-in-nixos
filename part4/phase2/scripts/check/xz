@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=xz-5.2.5.tar.xz
+DIR=xz-5.2.5
+
+cd /sources
+cd $DIR
+
+make check

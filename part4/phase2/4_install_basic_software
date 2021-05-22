@@ -1,0 +1,18 @@
+#! /bin/bash
+
+MAKEFLAGS="-j8"
+
+./scripts/build_and_install/zlib > /dev/null
+./scripts/build_and_install/bzip2 > /dev/null
+./scripts/build_and_install/xz > /dev/null
+./scripts/build_and_install/zstd > /dev/null
+./scripts/build_and_install/file > /dev/null
+./scripts/build_and_install/readline > /dev/null
+./scripts/build_and_install/m4 > /dev/null
+./scripts/build_and_install/bc > /dev/null
+./scripts/build_and_install/flex > /dev/null
+./scripts/build_and_install/tcl > /dev/null
+./scripts/build_and_install/expect > /dev/null
+./scripts/build_and_install/dejagnu > /dev/null
+./scripts/build_and_install/binutils > /dev/null
+

@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=flex-2.6.4.tar.gz
+DIR=flex-2.6.4
+
+cd /sources
+cd $DIR
+
+make check

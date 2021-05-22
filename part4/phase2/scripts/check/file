@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=file-5.39.tar.gz
+DIR=file-5.39
+
+cd /sources
+cd $DIR
+
+make check 

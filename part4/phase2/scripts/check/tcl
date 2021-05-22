@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=tcl8.6.11-src.tar.gz
+DIR=tcl8.6.11
+
+cd /sources
+cd $DIR
+cd unix
+make test
