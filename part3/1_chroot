@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+export LFS=/mnt/lfs
+
+chroot "/mnt/lfs" /usr/bin/env -i   \
+    HOME=/root                  \
+    TERM="xterm"                \
+    PS1='(lfs chroot) \u:\w\$ ' \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin \
+    /bin/bash --login +h

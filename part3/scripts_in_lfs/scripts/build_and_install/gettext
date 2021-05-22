@@ -12,6 +12,6 @@ fi
 tar -xf $SRC
 cd $DIR
 
-./configure --disable-shared > /dev/null
-make -j8 -s > /dev/null
-cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin
+./configure --disable-shared 
+make
+cp gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin

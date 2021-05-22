@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+export MAKEFLAGS='-j8'
+
+./scripts/build_and_install/libstdc++_2 > /dev/null
+./scripts/build_and_install/gettext > /dev/null
+./scripts/build_and_install/bison > /dev/null
+./scripts/build_and_install/perl > /dev/null
+./scripts/build_and_install/python > /dev/null
+./scripts/build_and_install/textinfo > /dev/null
+./scripts/build_and_install/util_linux > /dev/null

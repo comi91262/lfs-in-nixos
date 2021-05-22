@@ -2,6 +2,10 @@
 
 export LFS=/mnt/lfs
 
+losetup -P /dev/loop0 lfs.img 
+mount -v -t ext4 /dev/loop0p1 /mnt/lfs
+swapon -v /dev/loop0p2
+
 chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools}
 case $(uname -m) in
   x86_64) chown -R root:root $LFS/lib64 ;;

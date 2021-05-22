@@ -1,9 +1,0 @@
-#! /usr/bin/env bash
-
-./scripts/build_bison 
-./scripts/build_gettext
-./scripts/build_libstdc++_2
-./scripts/build_perl
-./scripts/build_python
-./scripts/build_textinfo
-./scripts/build_util_linux

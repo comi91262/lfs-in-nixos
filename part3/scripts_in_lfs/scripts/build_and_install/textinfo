@@ -12,6 +12,6 @@ fi
 tar -xf $SRC
 cd $DIR
 
-./configure --prefix=/usr > /dev/null
-make -j8 -s > /dev/null
-make install > /dev/null
+./configure --prefix=/usr 
+make
+make install 

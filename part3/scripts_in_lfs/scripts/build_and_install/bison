@@ -13,7 +13,6 @@ tar -xf $SRC
 cd $DIR
 
 ./configure --prefix=/usr \
-            --docdir=/usr/share/doc/bison-3.7.5 > /dev/null
-
-make -j8 -s > /dev/null
-make install > /dev/null
+            --docdir=/usr/share/doc/bison-3.7.5 
+make
+make install 

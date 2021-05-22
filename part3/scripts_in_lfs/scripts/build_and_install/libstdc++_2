@@ -14,8 +14,8 @@ cd $DIR
 
 ln -s gthr-posix.h libgcc/gthr-default.h
 
-mkdir -v build
-cd       build
+mkdir build
+cd    build
 
 ../libstdc++-v3/configure            \
     CXXFLAGS="-g -O2 -D_GNU_SOURCE"  \
@@ -23,7 +23,6 @@ cd       build
     --disable-multilib               \
     --disable-nls                    \
     --host=$(uname -m)-lfs-linux-gnu \
-    --disable-libstdcxx-pch > /dev/null
-
-make -j8 -s > /dev/null
-make install > /dev/null
+    --disable-libstdcxx-pch 
+make
+make install 
