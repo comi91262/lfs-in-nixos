@@ -1,0 +1,5 @@
+#! /bin/bash
+
+MAKEFLAG="-j8"
+
+./scripts/check/glibc

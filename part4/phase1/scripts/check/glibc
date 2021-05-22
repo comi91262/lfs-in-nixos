@@ -1,0 +1,7 @@
+#! /bin/bash
+
+SRC=glibc-2.33.tar.xz
+DIR=glibc-2.33
+
+cd /sources/$DIR/build
+make check

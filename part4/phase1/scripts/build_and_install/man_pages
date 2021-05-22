@@ -1,0 +1,15 @@
+#! /bin/bash
+
+SRC=man-pages-5.10.tar.xz
+DIR=man-pages-5.10
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+make install
