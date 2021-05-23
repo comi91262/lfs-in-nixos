@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=mpfr-4.1.0.tar.xz
+DIR=mpfr-4.1.0
+
+cd /sources
+cd $DIR
+make check

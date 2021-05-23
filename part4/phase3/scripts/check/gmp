@@ -1,0 +1,10 @@
+#! /bin/bash
+
+SRC=gmp-6.2.1.tar.xz
+DIR=gmp-6.2.1
+
+cd /sources
+cd $DIR
+
+make check 2>&1 | tee gmp-check-log
+

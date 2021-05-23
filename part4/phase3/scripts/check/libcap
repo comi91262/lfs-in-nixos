@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=libcap-2.48.tar.xz         
+DIR=libcap-2.48
+
+cd /sources
+cd $DIR
+make test

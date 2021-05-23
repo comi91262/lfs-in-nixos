@@ -1,0 +1,9 @@
+#! /bin/bash
+
+MAKEFLAGS="-j8"
+
+./scripts/check/gmp
+./scripts/check/mpfr
+./scripts/check/mpc
+./scripts/check/libcap
+./scripts/check/gcc

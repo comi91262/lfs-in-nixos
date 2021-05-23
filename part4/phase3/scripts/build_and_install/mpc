@@ -1,0 +1,21 @@
+#! /bin/bash
+
+SRC=mpc-1.2.1.tar.gz
+DIR=mpc-1.2.1
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr    \
+            --disable-static \
+            --docdir=/usr/share/doc/mpc-1.2.1 
+make
+make html
+make install 
+make install-html 

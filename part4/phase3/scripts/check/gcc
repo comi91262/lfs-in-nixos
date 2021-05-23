@@ -1,0 +1,12 @@
+#! /bin/bash
+
+SRC=gcc-10.2.0.tar.xz
+DIR=gcc-10.2.0
+
+cd /sources
+cd $DIR
+cd build
+
+ulimit -s 32768
+chown -Rv tester .
+su tester -c "PATH=$PATH make -k check"

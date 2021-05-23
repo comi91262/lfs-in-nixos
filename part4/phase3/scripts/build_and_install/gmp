@@ -1,0 +1,24 @@
+#! /bin/bash
+
+SRC=gmp-6.2.1.tar.xz
+DIR=gmp-6.2.1
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr    \
+            --enable-cxx     \
+            --disable-static \
+            --docdir=/usr/share/doc/gmp-6.2.1 
+make
+make html
+awk '/# PASS:/{total+=$3} ; END{print total}' gmp-check-log
+make install 
+make install-html 
+

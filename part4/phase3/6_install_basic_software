@@ -1,0 +1,12 @@
+#! /bin/bash
+
+MAKEFLAGS="-j8"
+
+./scripts/build_and_install/gmp > /dev/null
+./scripts/build_and_install/mpfr > /dev/null
+./scripts/build_and_install/mpc > /dev/null
+./scripts/build_and_install/attr > /dev/null
+./scripts/build_and_install/acl > /dev/null
+./scripts/build_and_install/libcap > /dev/null
+./scripts/build_and_install/shadow > /dev/null
+./scripts/build_and_install/gcc > /dev/null
