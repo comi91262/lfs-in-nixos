@@ -1,0 +1,17 @@
+#! /bin/bash
+
+SRC=groff-1.22.4.tar.gz
+DIR=groff-1.22.4
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+PAGE=A4 ./configure --prefix=/usr 
+make -j1
+make install 

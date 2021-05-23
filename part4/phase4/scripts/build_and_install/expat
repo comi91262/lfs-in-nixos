@@ -1,0 +1,19 @@
+#! /bin/bash
+
+SRC=expat-2.2.10.tar.xz
+DIR=expat-2.2.10
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+./configure --prefix=/usr    \
+            --disable-static \
+            --docdir=/usr/share/doc/expat-2.2.10 
+make
+make install 
+install -v -m644 doc/*.{html,png,css} /usr/share/doc/expat-2.2.10

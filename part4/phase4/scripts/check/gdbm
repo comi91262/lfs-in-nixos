@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=gdbm-1.19.tar.gz
+DIR=gdbm-1.19
+
+cd /sources
+cd $DIR
+
+make check

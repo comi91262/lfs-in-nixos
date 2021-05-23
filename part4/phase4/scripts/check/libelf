@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=elfutils-0.183.tar.bz2
+DIR=elfutils-0.183
+
+cd /sources
+cd $DIR
+make check

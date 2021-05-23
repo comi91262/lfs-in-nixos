@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=grep-3.6.tar.xz
+DIR=grep-3.6
+
+cd /sources
+cd $DIR
+make check

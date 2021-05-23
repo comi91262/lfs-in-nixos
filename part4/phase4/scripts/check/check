@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=check-0.15.2.tar.gz
+DIR=check-0.15.2
+
+cd /sources
+cd $DIR
+
+make check

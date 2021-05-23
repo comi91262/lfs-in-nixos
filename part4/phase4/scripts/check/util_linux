@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=util-linux-2.36.2.tar.xz
+DIR=util-linux-2.36.2
+
+cd /sources
+cd $DIR
+chown -Rv tester .
+su tester -c "make -k check"

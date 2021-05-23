@@ -1,0 +1,53 @@
+#! /bin/bash
+
+MAKEFLAGS="-j8"
+NINJAJOBS=8
+
+./scripts/build_and_install/pkg_config > /dev/null
+./scripts/build_and_install/ncurses > /dev/null
+./scripts/build_and_install/sed > /dev/null
+./scripts/build_and_install/psmisc > /dev/null
+./scripts/build_and_install/gettext > /dev/null
+./scripts/build_and_install/bison > /dev/null
+./scripts/build_and_install/grep > /dev/null
+./scripts/build_and_install/bash > /dev/null
+./scripts/build_and_install/libtool > /dev/null
+./scripts/build_and_install/gdbm > /dev/null
+./scripts/build_and_install/gperf > /dev/null
+./scripts/build_and_install/expat > /dev/null
+./scripts/build_and_install/inetutils > /dev/null
+./scripts/build_and_install/perl > /dev/null
+./scripts/build_and_install/xml_parser > /dev/null
+./scripts/build_and_install/intltool > /dev/null
+./scripts/build_and_install/autoconf > /dev/null
+./scripts/build_and_install/automake > /dev/null
+./scripts/build_and_install/kmod > /dev/null
+./scripts/build_and_install/libelf > /dev/null
+./scripts/build_and_install/libffi > /dev/null
+./scripts/build_and_install/openssl > /dev/null
+./scripts/build_and_install/python > /dev/null
+./scripts/build_and_install/ninja > /dev/null
+./scripts/build_and_install/meson > /dev/null
+./scripts/build_and_install/coreutils > /dev/null
+./scripts/build_and_install/check > /dev/null
+./scripts/build_and_install/diffutils > /dev/null
+./scripts/build_and_install/gawk > /dev/null
+./scripts/build_and_install/findutils > /dev/null
+./scripts/build_and_install/groff > /dev/null
+./scripts/build_and_install/grub > /dev/null
+./scripts/build_and_install/less > /dev/null
+./scripts/build_and_install/gzip > /dev/null
+./scripts/build_and_install/iproute2 > /dev/null
+./scripts/build_and_install/kbd > /dev/null
+./scripts/build_and_install/libpipeline > /dev/null
+./scripts/build_and_install/make > /dev/null
+./scripts/build_and_install/patch > /dev/null
+./scripts/build_and_install/man_db > /dev/null
+./scripts/build_and_install/tar > /dev/null
+./scripts/build_and_install/texinfo > /dev/null
+./scripts/build_and_install/vim > /dev/null
+./scripts/build_and_install/systemd > /dev/null
+./scripts/build_and_install/dbus > /dev/null
+./scripts/build_and_install/procps > /dev/null
+./scripts/build_and_install/util_linux > /dev/null
+./scripts/build_and_install/e2fsprogs > /dev/null

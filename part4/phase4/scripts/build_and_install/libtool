@@ -1,0 +1,19 @@
+#! /bin/bash
+
+SRC=libtool-2.4.6.tar.xz       
+DIR=libtool-2.4.6
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr 
+make
+make install 
+
+rm -fv /usr/lib/libltdl.a

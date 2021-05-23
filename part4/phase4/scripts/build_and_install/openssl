@@ -1,0 +1,25 @@
+#! /bin/bash
+
+SRC=openssl-1.1.1j.tar.gz
+DIR=openssl-1.1.1j
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./config --prefix=/usr         \
+         --openssldir=/etc/ssl \
+         --libdir=lib          \
+         shared                \
+         zlib-dynamic 
+
+make
+sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile
+make MANSUFFIX=ssl install 
+mv -v /usr/share/doc/openssl /usr/share/doc/openssl-1.1.1j
+cp -vfr doc/* /usr/share/doc/openssl-1.1.1j

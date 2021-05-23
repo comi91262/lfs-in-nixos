@@ -1,0 +1,15 @@
+#! /bin/bash
+
+SRC=coreutils-8.32.tar.xz
+DIR=coreutils-8.32
+
+cd /sources
+cd $DIR
+
+make NON_ROOT_USERNAME=tester check-root
+
+echo "dummy:x:102:tester" >> /etc/group
+chown -Rv tester . 
+su tester -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"
+sed -i '/dummy/d' /etc/group
+

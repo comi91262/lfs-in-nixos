@@ -1,0 +1,10 @@
+#! /bin/bash
+
+SRC=sed-4.8.tar.xz
+DIR=sed-4.8
+
+cd /sources
+cd $DIR
+
+chown -Rv tester .
+su tester -c "PATH=$PATH make check"

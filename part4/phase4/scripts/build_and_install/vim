@@ -1,0 +1,23 @@
+#! /bin/bash
+
+SRC=vim-8.2.2433.tar.gz
+DIR=vim-8.2.2433
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
+./configure --prefix=/usr 
+make
+make install 
+ln -s vim /usr/bin/vi
+for L in  /usr/share/man/{,*/}man1/vim.1; do
+    ln -s vim.1 $(dirname $L)/vi.1
+done
+ln -s ../vim/vim82/doc /usr/share/doc/vim-8.2.2433

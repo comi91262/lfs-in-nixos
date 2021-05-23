@@ -1,0 +1,17 @@
+#! /bin/bash
+
+SRC=libpipeline-1.5.3.tar.gz   
+DIR=libpipeline-1.5.3
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr 
+make
+make install 

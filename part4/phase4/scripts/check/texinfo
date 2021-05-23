@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=texinfo-6.7.tar.xz
+DIR=texinfo-6.7
+
+cd /sources
+cd $DIR
+make check

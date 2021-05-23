@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=man-db-2.9.4.tar.xz
+DIR=man-db-2.9.4
+
+cd /sources
+cd $DIR
+make check

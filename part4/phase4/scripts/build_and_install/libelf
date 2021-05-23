@@ -1,0 +1,23 @@
+#! /bin/bash
+
+SRC=elfutils-0.183.tar.bz2
+DIR=elfutils-0.183
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr                \
+            --disable-debuginfod         \
+            --enable-libdebuginfod=dummy \
+            --libdir=/lib 
+
+make
+make -C libelf install 
+install -vm644 config/libelf.pc /usr/lib/pkgconfig
+rm /lib/libelf.a

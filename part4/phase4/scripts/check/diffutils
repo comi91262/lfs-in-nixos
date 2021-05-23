@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=diffutils-3.7.tar.xz
+DIR=diffutils-3.7
+
+cd /sources
+cd $DIR
+make check

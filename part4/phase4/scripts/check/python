@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=Python-3.9.2.tar.xz
+DIR=Python-3.9.2
+
+cd /sources
+cd $DIR
+
+make test

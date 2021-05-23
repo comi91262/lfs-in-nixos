@@ -1,0 +1,17 @@
+#! /bin/bash
+
+SRC=make-4.3.tar.gz            
+DIR=make-4.3
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr 
+make 
+make install 

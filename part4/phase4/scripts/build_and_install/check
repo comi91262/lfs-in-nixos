@@ -1,0 +1,17 @@
+#! /bin/bash
+
+SRC=check-0.15.2.tar.gz
+DIR=check-0.15.2
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr --disable-static 
+make
+make docdir=/usr/share/doc/check-0.15.2 install 

@@ -1,0 +1,12 @@
+#! /bin/bash
+
+SRC=bash-5.1.tar.gz
+DIR=bash-5.1
+
+cd /sources
+cd $DIR
+
+chown -Rv tester .
+su tester << EOF
+PATH=$PATH make tests < $(tty)
+EOF

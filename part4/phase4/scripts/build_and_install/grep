@@ -1,0 +1,17 @@
+#! /bin/bash
+
+SRC=grep-3.6.tar.xz
+DIR=grep-3.6
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr --bindir=/bin 
+make
+make install 

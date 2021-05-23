@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=intltool-0.51.0.tar.gz  
+DIR=intltool-0.51.0
+
+cd /sources
+cd $DIR
+make check

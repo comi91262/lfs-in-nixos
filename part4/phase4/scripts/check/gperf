@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=gperf-3.1.tar.gz
+DIR=gperf-3.1
+
+cd /sources
+cd $DIR
+make -j1 check

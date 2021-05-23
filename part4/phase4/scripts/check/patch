@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=patch-2.7.6.tar.xz
+DIR=patch-2.7.6
+
+cd /sources
+cd $DIR
+
+make check

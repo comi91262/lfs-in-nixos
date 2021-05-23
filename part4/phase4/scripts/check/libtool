@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=libtool-2.4.6.tar.xz       
+DIR=libtool-2.4.6
+
+cd /sources
+cd $DIR
+make check

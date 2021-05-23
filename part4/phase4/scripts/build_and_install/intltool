@@ -1,0 +1,20 @@
+#! /bin/bash
+
+SRC=intltool-0.51.0.tar.gz  
+DIR=intltool-0.51.0
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+sed -i 's:\\\${:\\\$\\{:' intltool-update.in
+
+./configure --prefix=/usr 
+make
+make install 
+install -v -Dm644 doc/I18N-HOWTO /usr/share/doc/intltool-0.51.0/I18N-HOWTO

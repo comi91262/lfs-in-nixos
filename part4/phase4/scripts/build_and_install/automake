@@ -1,0 +1,18 @@
+#! /bin/bash
+
+SRC=automake-1.16.3.tar.xz
+DIR=automake-1.16.3
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+sed -i "s/''/etags/" t/tags-lisp-space.sh
+./configure --prefix=/usr --docdir=/usr/share/doc/automake-1.16.3 
+make
+make install 

@@ -1,0 +1,10 @@
+#! /bin/bash
+
+SRC=e2fsprogs-1.46.1.tar.gz
+DIR=e2fsprogs-1.46.1
+
+cd /sources
+cd $DIR
+cd build
+
+make check

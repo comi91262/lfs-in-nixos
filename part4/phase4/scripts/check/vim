@@ -1,0 +1,11 @@
+#! /bin/bash
+
+SRC=vim-8.2.2433.tar.gz
+DIR=vim-8.2.2433
+
+cd /sources
+cd $DIR
+
+chown -Rv tester .
+su tester -c "LANG=en_US.UTF-8 make -j1 test" &> vim-test.log
+

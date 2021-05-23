@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=kbd-2.4.0.tar.xz
+DIR=kbd-2.4.0
+
+cd /sources
+cd $DIR
+make check

@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=gawk-5.1.0.tar.xz
+DIR=gawk-5.1.0
+
+cd /sources
+cd $DIR
+make check

@@ -1,0 +1,22 @@
+#! /bin/bash
+
+SRC=sed-4.8.tar.xz
+DIR=sed-4.8
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr --bindir=/bin 
+
+make
+make html 
+make install 
+
+install -d -m755           /usr/share/doc/sed-4.8
+install -m644 doc/sed.html /usr/share/doc/sed-4.8

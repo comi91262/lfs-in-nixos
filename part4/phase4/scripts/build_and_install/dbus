@@ -1,0 +1,29 @@
+#! /bin/bash
+
+SRC=dbus-1.12.20.tar.gz
+DIR=dbus-1.12.20
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr                        \
+            --sysconfdir=/etc                    \
+            --localstatedir=/var                 \
+            --disable-static                     \
+            --disable-doxygen-docs               \
+            --disable-xml-docs                   \
+            --docdir=/usr/share/doc/dbus-1.12.20 \
+            --with-console-auth-dir=/run/console \
+            --with-system-pid-file=/run/dbus/pid \
+            --with-system-socket=/run/dbus/system_bus_socket 
+make
+make install 
+mv  /usr/lib/libdbus-1.so.* /lib
+ln -sf ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so
+ln -sf /etc/machine-id /var/lib/dbus

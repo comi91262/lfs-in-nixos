@@ -1,0 +1,17 @@
+#! /bin/bash
+
+SRC=XML-Parser-2.46.tar.gz
+DIR=XML-Parser-2.46
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+perl Makefile.PL 
+make
+make install 

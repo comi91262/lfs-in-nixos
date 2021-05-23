@@ -1,0 +1,10 @@
+#! /bin/bash
+
+SRC=ninja-1.10.2.tar.gz
+DIR=ninja-1.10.2
+
+cd /sources
+cd $DIR
+
+./ninja ninja_test > /dev/null
+./ninja_test --gtest_filter=-SubprocessTest.SetWithLots

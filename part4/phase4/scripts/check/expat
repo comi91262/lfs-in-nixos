@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=expat-2.2.10.tar.xz
+DIR=expat-2.2.10
+
+cd /sources
+cd $DIR
+make check

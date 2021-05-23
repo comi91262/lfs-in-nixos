@@ -1,0 +1,18 @@
+#! /bin/bash
+
+SRC=libffi-3.3.tar.gz
+DIR=libffi-3.3
+
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr --disable-static --with-gcc-arch=native 
+make
+make install 

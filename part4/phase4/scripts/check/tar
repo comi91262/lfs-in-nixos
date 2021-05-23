@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=tar-1.34.tar.xz
+DIR=tar-1.34
+
+cd /sources
+cd $DIR
+make check

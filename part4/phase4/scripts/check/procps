@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=procps-ng-3.3.17.tar.xz
+DIR=procps-3.3.17
+
+cd /sources
+cd $DIR
+make check
+

@@ -1,0 +1,8 @@
+#! /bin/bash
+
+SRC=bison-3.7.5.tar.xz
+DIR=bison-3.7.5
+
+cd /sources
+cd $DIR
+make check

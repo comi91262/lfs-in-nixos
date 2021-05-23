@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=libffi-3.3.tar.gz
+DIR=libffi-3.3
+
+
+cd /sources
+cd $DIR
+make check

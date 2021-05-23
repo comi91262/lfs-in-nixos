@@ -1,0 +1,9 @@
+#! /bin/bash
+
+SRC=inetutils-2.0.tar.xz
+DIR=inetutils-2.0
+
+cd /sources
+cd $DIR
+
+make check

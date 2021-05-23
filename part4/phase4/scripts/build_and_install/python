@@ -1,0 +1,29 @@
+#! /bin/bash
+
+SRC=Python-3.9.2.tar.xz
+DIR=Python-3.9.2
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+./configure --prefix=/usr       \
+            --enable-shared     \
+            --with-system-expat \
+            --with-system-ffi   \
+            --with-ensurepip=yes 
+make
+make install 
+
+install -v -dm755 /usr/share/doc/python-3.9.2/html
+
+tar --strip-components=1  \
+    --no-same-owner       \
+    --no-same-permissions \
+    -C /usr/share/doc/python-3.9.2/html \
+    -xf ../python-3.9.2-docs-html.tar.bz2
