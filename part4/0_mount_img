@@ -16,7 +16,7 @@ if [ -h $LFS/dev/shm ]; then
   mkdir -pv $LFS/$(readlink $LFS/dev/shm)
 fi
 
-cp -r 10_clean_up_lfs $LFS/tools/.
+cp 11_clean_up_lfs $LFS/tools/.
 cp -r phase1 $LFS/tools/.
 cp -r phase2 $LFS/tools/.
 cp -r phase3 $LFS/tools/.

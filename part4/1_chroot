@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 chroot "/mnt/lfs" /usr/bin/env -i          \
     HOME=/root TERM="xterm"            \

@@ -1,0 +1,5 @@
+#! /bin/bash
+
+export MAKEFLAGS="-j8"
+
+./scripts/configure/glibc

@@ -1,7 +1,7 @@
 #! /bin/bash
 
-MAKEFLAGS="-j8"
-NINJAJOBS=8
+export MAKEFLAGS="-j8"
+export NINJAJOBS=8
 
 ./scripts/build_and_install/pkg_config > /dev/null
 ./scripts/build_and_install/ncurses > /dev/null

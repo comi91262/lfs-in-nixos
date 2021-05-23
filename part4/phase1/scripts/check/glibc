@@ -3,5 +3,7 @@
 SRC=glibc-2.33.tar.xz
 DIR=glibc-2.33
 
-cd /sources/$DIR/build
+cd /sources
+cd $DIR
+cd build
 make check

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-MAKEFLAGS="-j8"
+export MAKEFLAGS="-j8"
 
 ./scripts/build_and_install/zlib > /dev/null
 ./scripts/build_and_install/bzip2 > /dev/null

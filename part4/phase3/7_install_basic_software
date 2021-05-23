@@ -1,6 +1,6 @@
 #! /bin/bash
 
-MAKEFLAGS="-j8"
+export MAKEFLAGS="-j8"
 
 ./scripts/build_and_install/gmp > /dev/null
 ./scripts/build_and_install/mpfr > /dev/null

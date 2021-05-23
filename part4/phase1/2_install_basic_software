@@ -1,6 +1,6 @@
 #! /bin/bash
 
-MAKEFLAG="-j8"
+export MAKEFLAGS="-j8"
 
 ./scripts/build_and_install/man_pages > /dev/null
 ./scripts/build_and_install/iana_etc > /dev/null

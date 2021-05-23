@@ -1,5 +1,5 @@
 #! /bin/bash
 
-MAKEFLAG="-j8"
+export MAKEFLAGS="-j8"
 
 ./scripts/check/glibc
