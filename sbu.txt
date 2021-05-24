@@ -1,0 +1,98 @@
+# SBU
+
+part2: BinUtils Pass1 -ji
+
+real	2m43.576s
+user	2m10.705s
+sys	    0m37.663s
+
+part2: BinUtils Pass1 -j2
+
+real	1m37.105s
+user	2m27.512s
+sys	    0m43.296s
+
+part2: BinUtils Pass1 -j4
+
+real	1m3.539s
+user	2m45.597s
+sys	    0m43.129s
+
+part2: BinUtils Pass1 -j8
+
+real	0m58.666s
+user	3m25.276s
+sys	    0m45.442s
+
+part2: BinUtils Pass1 -j10
+
+real	0m59.523s
+user	3m24.638s
+sys	    0m45.614s
+
+part2: BinUtils Pass1 -j16
+
+real	1m0.586s
+user	3m22.397s
+sys 	0m45.197s
+
+part2: all -j8
+
+real 36m19.849s
+user 130m44.318s
+sys	 14m11.667s
+
+part3: all -j8
+
+real	8m22.673s
+user	21m47.627s
+sys	    3m0.217s
+
+part4: man_pages - glibc build and install -j8
+
+real	8m27.902s
+user	49m45.727s
+sys	    4m20.790s
+
+
+part4: man_pages - glibc check -j8
+
+real	17m34.236s
+user	43m26.941s
+sys	    11m37.560s
+
+part4: zlib - binutils build and install -j8
+
+real	6m20.208s
+user	25m48.042s
+sys	    2m0.867s
+
+part4: zlib - binutils check -j8
+
+real	8m56.373s
+user	10m18.375s
+sys	    3m21.485s
+
+part4: gmp - gcc build and install -j8
+
+real	11m26.614s
+user	60m46.526s
+sys	    4m11.243s
+
+part4: gmp - gcc check -j8
+
+real	62m13.454s
+user	408m34.643s
+sys	    77m24.880s
+
+part4: pkg-config - e2fsprogs build and install -j8
+
+real	24m31.208s
+user	61m10.333s
+sys	    9m41.050s
+
+part4: pkg-config - e2fsprogs check -j8
+
+real	60m32.732s
+user	85m54.219s
+sys	    16m11.075s
