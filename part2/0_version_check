@@ -55,10 +55,10 @@ else
   echo "file not found"
 fi
 
-nix-shell -p gcc --command "gcc --version | head -n1"
-nix-shell -p gcc --command "g++ --version | head -n1"
+nix-shell -p gcc --run "gcc --version | head -n1"
+nix-shell -p gcc --run "g++ --version | head -n1"
 
-echo 'int main(){}' > dummy.c && nix-shell -p gcc --command "g++ -o dummy dummy.c"
+echo 'int main(){}' > dummy.c && nix-shell -p gcc --run "g++ -o dummy dummy.c"
 if [ -x dummy ]
   then echo "g++ compilation OK";
   else echo "g++ compilation faield"; fi
