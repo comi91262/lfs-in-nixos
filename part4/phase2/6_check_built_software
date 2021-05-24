@@ -3,7 +3,6 @@
 export MAKEFLAGS="-j8"
 
 ./scripts/check/zlib
-./scripts/check/bzip2
 ./scripts/check/xz
 ./scripts/check/zstd
 ./scripts/check/file
