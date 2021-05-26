@@ -1,0 +1,24 @@
+#! /bin/bash
+
+export MAKEFLAGS="-j8"
+SRC=linux-5.10.17.tar.xz
+DIR=linux-5.10.17
+
+
+cd /sources
+
+if [ -d $DIR ]; then
+  rm -rf $DIR
+fi
+
+tar -xf $SRC
+cd $DIR
+
+make mrproper
+make defconfig
+make
+make modules_install
+cp -iv arch/x86_64/boot/bzImage /boot/vmlinuz-5.10.17-lfs-10.1-systemd
+install -d /usr/share/doc/linux-5.10.17
+cp -r Documentation/* /usr/share/doc/linux-5.10.17
+

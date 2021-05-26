@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+
+export LFS=/mnt/lfs
+
+losetup -P /dev/loop0 lfs.img 
+mount -v -t ext4 /dev/loop0p1 /mnt/lfs
+swapon -v /dev/loop0p2
+mount -v -t vfat /dev/loop0p3 /mnt/lfs/boot
+
+mount -v --bind /dev $LFS/dev
+mount -v --bind /dev/pts $LFS/dev/pts
+mount -vt proc proc $LFS/proc
+mount -vt sysfs sysfs $LFS/sys
+mount -vt tmpfs tmpfs $LFS/run
+if [ -h $LFS/dev/shm ]; then
+  mkdir -pv $LFS/$(readlink $LFS/dev/shm)
+fi
+
+cp 2_install_kernel $LFS/tools/.
